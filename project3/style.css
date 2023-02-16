@@ -1,0 +1,225 @@
+/* global */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Titillium+Web:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+}
+
+/* header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  z-index: 1;
+  backdrop-filter: blur(5px);
+}
+
+.header a {
+  text-decoration: none;
+  color: #111111;
+  font-size: 2rem;
+}
+
+.menu-items {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.menu-items li a {
+  font-size: 1rem;
+  padding: 0.5em 1em;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.menu-items li a:hover {
+  background-color: #ccc7d3;
+}
+
+/* nav menu button / hamburger menu button */
+.menu-btn {
+  position: relative;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  z-index: 1;
+}
+.menu-btn__lines,
+.menu-btn__lines::before,
+.menu-btn__lines::after {
+  width: 1.5rem;
+  height: 0.1rem;
+  background-color: #111111;
+  transition: all 0.5s ease-in-out;
+}
+.menu-btn__lines::before,
+.menu-btn__lines::after {
+  content: '';
+  position: absolute;
+}
+.menu-btn__lines::before {
+  transform: translateY(-0.5rem);
+}
+.menu-btn__lines::after {
+  transform: translateY(0.5rem);
+}
+
+/* hamburger animation */
+.menu-btn.open .menu-btn__lines {
+  transform: translateX(2rem);
+  background-color: transparent;
+}
+.menu-btn.open .menu-btn__lines::before {
+  transform: rotate(45deg) translate(-1.5rem, 1.5rem);
+  background-color: #ffffff;
+}
+.menu-btn.open .menu-btn__lines::after {
+  transform: rotate(-45deg) translate(-1.5rem, -1.5rem);
+  background-color: #ffffff;
+}
+
+/* section */
+.section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* hero section */
+.hero-section {
+  background-color: #dfdbe3;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='72' viewBox='0 0 36 72'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M2 6h12L8 18 2 6zm18 36h12l-6 12-6-12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.hero-col {
+  padding: clamp(1rem, 8vw, 5rem);
+  max-width: 50%;
+}
+
+.section h1 {
+  font-family: 'Titillium Web', serif;
+  font-size: clamp(60px, 8vw, 200px);
+  font-weight: 700;
+  line-height: 3vw;
+  color: #ccc7d3;
+  text-transform: uppercase;
+}
+
+.section h2 {
+  font-size: clamp(18px, 2.5vw, 60px);
+  color: #5a4d70;
+  padding-left: 3rem;
+  text-transform: uppercase;
+}
+
+.section p {
+  color: #5a4d70;
+  padding-right: 1rem;
+}
+
+.hero-section img {
+  width: clamp(250px, 30vw, 500px);
+  transform: scaleX(-1);
+}
+
+/* custom-shape-divider for header */
+.custom-shape-divider-bottom-1605435655 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1605435655 svg {
+  position: relative;
+  display: block;
+  width: calc(124% + 1.3px);
+  height: 178px;
+}
+
+.custom-shape-divider-bottom-1605435655 .shape-fill {
+  fill: #ffffff;
+}
+
+.another-col {
+  width: clamp(300px, 50vw, 600px);
+}
+
+/** For tablet devices **/
+@media (max-width: 1023px) {
+  .custom-shape-divider-bottom-1605435655 svg {
+    width: calc(149% + 1.3px);
+    height: 178px;
+  }
+  .hero-col {
+    max-width: 100%;
+    width: clamp(300px, 50vw, 600px);
+    padding: 0;
+  }
+  .hero-img {
+    display: none;
+  }
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+  .custom-shape-divider-bottom-1605435655 svg {
+    width: calc(140% + 1.3px);
+    height: 180px;
+  }
+  .header a {
+    font-size: 1rem;
+  }
+  .menu-btn {
+    display: flex;
+  }
+  .menu-items {
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(100vw);
+    background-color: #5a4d70;
+    transition: transform 0.3s ease-in-out;
+  }
+  .menu-items.open {
+    transform: translateX(0);
+  }
+  .menu-items li {
+    width: 100%;
+    height: 100%;
+  }
+  .menu-items li a {
+    color: #ffffff;
+    font-size: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .menu-items li a:hover {
+    color: #111111;
+  }
+}
